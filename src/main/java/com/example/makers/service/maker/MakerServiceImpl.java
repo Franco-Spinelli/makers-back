@@ -23,6 +23,11 @@ public class MakerServiceImpl implements MakerService{
     }
 
     @Override
+    public Maker findByName(String name) {
+        return makerRepository.findByName(name);
+    }
+
+    @Override
     public void save(Maker maker) {
         makerRepository.save(maker);
     }

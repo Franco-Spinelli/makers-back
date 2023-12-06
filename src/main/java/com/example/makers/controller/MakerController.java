@@ -52,6 +52,17 @@ public class MakerController {
                 .toList();
         return ResponseEntity.ok(makerDtoList);
     }
+    @GetMapping("/findByName/{name}")
+    public ResponseEntity<?> findByName(@PathVariable String name){
+        Maker maker = makerService.findByName(name);
+        if (maker == null){
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(MakerDto.builder()
+                                .name(maker.getName())
+                                .products(maker.getProducts())
+                                .id(maker.getId()).build());
+    }
     @GetMapping("/findById/{id}")
     public ResponseEntity<?> findById(@PathVariable Integer id){
         Optional<Maker> optionalMaker = makerService.findById(id);
