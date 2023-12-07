@@ -27,6 +27,7 @@ public class MakerController {
         makerService.save(Maker.builder()
                         .name(makerDto.getName())
                         .id(makerDto.getId())
+                        .img(makerDto.getImg())
                         .build());
     return ResponseEntity.created(new URI("api/maker/save")).build();
     }
@@ -39,6 +40,7 @@ public class MakerController {
         }
         Maker maker = makerOptional.get();
         maker.setName(makerDto.getName());
+        maker.setImg(makerDto.getImg());
         makerService.save(maker);
         return ResponseEntity.ok().build();
     }
@@ -48,6 +50,7 @@ public class MakerController {
                 .map(maker -> MakerDto.builder()
                         .id(maker.getId())
                         .name(maker.getName())
+                        .img(maker.getImg())
                         .products(maker.getProducts())
                         .build())
                 .toList();
@@ -61,6 +64,7 @@ public class MakerController {
         }
         return ResponseEntity.ok(MakerDto.builder()
                                 .name(maker.getName())
+                                .img(maker.getImg())
                                 .products(maker.getProducts())
                                 .id(maker.getId()).build());
     }
@@ -73,6 +77,7 @@ public class MakerController {
         Maker maker = optionalMaker.get();
         MakerDto makerDto = MakerDto.builder()
                 .name(maker.getName())
+                .img(maker.getImg())
                 .id(maker.getId())
                 .products(maker.getProducts()).build();
         return ResponseEntity.ok(makerDto);

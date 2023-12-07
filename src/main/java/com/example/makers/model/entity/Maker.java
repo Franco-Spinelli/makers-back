@@ -25,6 +25,8 @@ public class Maker implements Serializable {
     private Integer id;
     @Column(name = "name")
     private String name;
+    @Column(name = "img")
+    private String img;
     @JsonIgnore
     @OneToMany(mappedBy = "maker", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();

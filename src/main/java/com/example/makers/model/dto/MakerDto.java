@@ -17,5 +17,6 @@ import java.util.List;
 public class MakerDto {
     private Integer id;
     private String name;
+    private String img;
     private List<Product> products = new ArrayList<>();
 }
