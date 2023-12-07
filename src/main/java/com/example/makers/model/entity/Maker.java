@@ -28,8 +28,4 @@ public class Maker implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "maker", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     private List<Product> products = new ArrayList<>();
-
-    public void addProduct(Product product){
-        products.add(product);
-    }
 }

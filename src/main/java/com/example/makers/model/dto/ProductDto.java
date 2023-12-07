@@ -17,5 +17,5 @@ public class ProductDto {
     private Integer id;
     private String name;
     private BigDecimal price;
-    private Maker maker;
+    private String makerName;
 }
