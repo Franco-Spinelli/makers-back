@@ -69,10 +69,10 @@ public class ProductController {
     @PostMapping("/save")
     public ResponseEntity<?>save(@RequestBody ProductDto productDto) throws URISyntaxException {
         Maker maker = makerService.findByName(productDto.getMakerName());
-        if (maker == null){
-            return  ResponseEntity.notFound().build();
+        if (productDto.getPrice().compareTo(BigDecimal.ZERO)<=0){
+            return  ResponseEntity.badRequest().build();
         }
-        else if(productDto.getPrice() == null || productDto.getName().isBlank() || productDto.getMakerName() == null){
+        else if(productDto.getName().isBlank() || productDto.getMakerName() == null || maker == null){
             return ResponseEntity.notFound().build();
         }
         productService.save(Product.builder()
